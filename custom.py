@@ -128,10 +128,6 @@ class CustomDataset(utils.Dataset):
             rr, cc = skimage.draw.polygon(p['all_points_y'], p['all_points_x'])
 
             mask[rr, cc, i] = 1
-
-        # Return mask, and array of class IDs of each instance. Since we have
-        # one class ID only, we return an array of 1s
-        # Map class names to class IDs.
         num_ids = np.array(num_ids, dtype=np.int32)
         return mask, num_ids #np.ones([mask.shape[-1]], dtype=np.int32)
 
@@ -145,7 +141,7 @@ class CustomDataset(utils.Dataset):
 
 def train(model):
     """Train the model."""
-    # Training dataset.
+
     dataset_train = CustomDataset()
     dataset_train.load_custom(r"C:\Users\LeonardaBrkovic\Diplomski_MaskRCNN\Dataset", "training_masline")
     dataset_train.prepare()
@@ -155,10 +151,6 @@ def train(model):
     dataset_val.load_custom(r"C:\Users\LeonardaBrkovic\Diplomski_MaskRCNN\Dataset", "val_masline")
     dataset_val.prepare()
 
-    # *** This training schedule is an example. Update to your needs ***
-    # Since we're using a very small dataset, and starting from
-    # COCO trained weights, we don't need to train too long. Also,
-    # no need to train all layers, just the heads should do it.
     # print("Training network heads")
     # model.train(dataset_train, dataset_val,
     #             learning_rate=config.LEARNING_RATE,
