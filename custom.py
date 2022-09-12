@@ -150,7 +150,6 @@ def train(model):
     dataset_val = CustomDataset()
     dataset_val.load_custom(r"C:\Users\LeonardaBrkovic\Diplomski_MaskRCNN\Dataset", "val_masline")
     dataset_val.prepare()
-
     # print("Training network heads")
     # model.train(dataset_train, dataset_val,
     #             learning_rate=config.LEARNING_RATE,
